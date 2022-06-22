@@ -1,8 +1,12 @@
 # Interview Scheduler
 
 ## Setup
-
+```sh
+For this project testing, api-server should be runing on `http://localhost:8001`
+```
+```sh
 Install dependencies with `npm install`.
+```
 
 ## Running Webpack Development Server
 
