@@ -24,7 +24,6 @@ export const useApplicationData = function () {
     }
 
     async function deleteInterview(id) {
-        console.log(id);
         const appointment = {
             ...state.appointments[id],
             interview: null
@@ -38,7 +37,6 @@ export const useApplicationData = function () {
         } catch (error) {
             throw error['message'];
         }
-        console.log(state);
         let temp = { ...state };
         let tempDayIndex = temp.days.findIndex(item => item.name === state.day);
         console.log(tempDayIndex);
@@ -65,8 +63,6 @@ export const useApplicationData = function () {
         }
         let temp = { ...state };
         let tempDayIndex = temp.days.findIndex(item => item.name === state.day);
-        console.log(tempDayIndex);
-        console.log(temp['days'][tempDayIndex]);
         if (mode != 'EDIT') {
             temp['days'][tempDayIndex].spots--;
         }
@@ -74,7 +70,6 @@ export const useApplicationData = function () {
     }
 
     async function editInterview(id, interview) {
-        console.log(interview);
         const appointment = {
             ...state.appointments[id],
             interview: { ...interview }
