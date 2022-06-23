@@ -47,7 +47,7 @@ export const useApplicationData = function () {
         setState({ ...state, appointments, days: temp['days'] });
     }
 
-    async function bookInterview(id, interview) {
+    async function bookInterview(id, interview, mode = 'SAVE') {
         console.log(interview);
         const appointment = {
             ...state.appointments[id],
@@ -67,7 +67,9 @@ export const useApplicationData = function () {
         let tempDayIndex = temp.days.findIndex(item => item.name === state.day);
         console.log(tempDayIndex);
         console.log(temp['days'][tempDayIndex]);
-        temp['days'][tempDayIndex].spots--;
+        if (mode != 'EDIT') {
+            temp['days'][tempDayIndex].spots--;
+        }
         setState({ ...state, appointments, days: temp['days'] });
     }
 
@@ -95,7 +97,7 @@ export const useApplicationData = function () {
     }
     //!
 
-    return {state,setDay,bookInterview, deleteInterview, editInterview,setDaysAndAppointmentsAndInterviewers,interviewersForDay,dailyAppointments,setState}
+    return { state, setDay, bookInterview, deleteInterview, editInterview, setDaysAndAppointmentsAndInterviewers, interviewersForDay, dailyAppointments, setState }
 
 }
 

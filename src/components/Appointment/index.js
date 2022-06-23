@@ -27,6 +27,8 @@ function Appointment(props) {
     const init = interview ? SHOW : EMPTY;
     const { mode, transition, back, setMode } = useVisualMode(init);
 
+    let tempMode = mode;
+
     async function save(name, interviewer) {
         const interview = {
             student: name,
@@ -34,7 +36,7 @@ function Appointment(props) {
         };
         setMode(SAVE);
         try {
-            await bookInterview(id, interview);
+            await bookInterview(id, interview, tempMode);
             setMode(SHOW);
             return;
         } catch (error) {
