@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from '../helpers/selectors';
+import { getAppointmentsForDay, getInterviewersForDay } from '../helpers/selectors';
 
 export const useApplicationData = function () {
     const [state, setState] = useState({
@@ -33,7 +33,7 @@ export const useApplicationData = function () {
             [id]: appointment
         }
         try {
-            await axios.delete(`http://localhost:8001/api/appointments/${Number(id)}`);
+            await axios.delete(`/api/appointments/${Number(id)}`);
         } catch (error) {
             throw error['message'];
         }
@@ -57,13 +57,13 @@ export const useApplicationData = function () {
         };
 
         try {
-            await axios.put(`http://localhost:8001/api/appointments/${id}`, { interview });
+            await axios.put(`/api/appointments/${id}`, { interview });
         } catch (error) {
             throw error['message'];
         }
         let temp = { ...state };
         let tempDayIndex = temp.days.findIndex(item => item.name === state.day);
-        if (mode != 'EDIT') {
+        if (mode !== 'EDIT') {
             temp['days'][tempDayIndex].spots--;
         }
         setState({ ...state, appointments, days: temp['days'] });
@@ -80,7 +80,7 @@ export const useApplicationData = function () {
         };
 
         try {
-            await axios.put(`http://localhost:8001/api/appointments/${id}`, { interview });
+            await axios.put(`/api/appointments/${id}`, { interview });
         } catch (error) {
             throw error['message'];
         }

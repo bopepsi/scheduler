@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './styles.scss';
 
 import Header from './Header';
@@ -22,7 +22,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 function Appointment(props) {
 
-    const { time, interview, id, interviewers, bookInterview, deleteInterview, editInterview } = props;
+    const { time, interview, id, interviewers, bookInterview, deleteInterview } = props;
 
     const init = interview ? SHOW : EMPTY;
     const { mode, transition, back, setMode } = useVisualMode(init);

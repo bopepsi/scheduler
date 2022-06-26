@@ -8,7 +8,7 @@ function Form(props) {
     const [interviewer, setInterviewer] = useState(props.interviewer || null);
     const [error, setError] = useState(null);
 
-    const { interviewers, onSave, onCancel } = props;
+    const { interviewers, onCancel } = props;
 
     if (interviewer !== null && interviewer['id']) setInterviewer(interviewer.id);
 

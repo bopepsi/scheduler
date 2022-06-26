@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import axios from "axios";
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from '../helpers/selectors';
+import {  getInterview } from '../helpers/selectors';
 import { useApplicationData } from "hooks/useApplicationData";
 
 function Application(props) {
@@ -15,9 +15,9 @@ function Application(props) {
   useEffect(() => {
     (async () => {
       try {
-        const responseDays = await axios.get('http://localhost:8001/api/days');
-        const responseAppointments = await axios.get('http://localhost:8001/api/appointments');
-        const responseInterviewers = await axios.get('http://localhost:8001/api/interviewers');
+        const responseDays = await axios.get('/api/days');
+        const responseAppointments = await axios.get('/api/appointments');
+        const responseInterviewers = await axios.get('/api/interviewers');
 
         console.log(responseDays['data']);
         console.log(responseAppointments['data']);
@@ -33,7 +33,7 @@ function Application(props) {
         throw error;
       }
     })();
-  }, [])
+  }, [setDaysAndAppointmentsAndInterviewers])
 
   return (
     <main className="layout">
