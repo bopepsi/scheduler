@@ -10,18 +10,12 @@ function Application(props) {
 
   const { state, setDay, bookInterview, deleteInterview, editInterview, setDaysAndAppointmentsAndInterviewers, interviewersForDay, dailyAppointments} = useApplicationData();
 
-
-
   useEffect(() => {
     (async () => {
       try {
         const responseDays = await axios.get('/api/days');
         const responseAppointments = await axios.get('/api/appointments');
         const responseInterviewers = await axios.get('/api/interviewers');
-
-        console.log(responseDays['data']);
-        console.log(responseAppointments['data']);
-        console.log(responseInterviewers['data']);
 
         setDaysAndAppointmentsAndInterviewers({
           days: responseDays['data'],

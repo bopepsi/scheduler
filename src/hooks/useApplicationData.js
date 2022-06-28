@@ -6,11 +6,10 @@ export const useApplicationData = function () {
     const [state, setState] = useState({
         day: "Monday",
         days: [],
-        // you may put the line below, but will have to remove/comment hardcoded appointments variable
         appointments: {},
         interviewers: {}
     });
-    //! From Application main content
+
     const dailyAppointments = getAppointmentsForDay(state, state['day']);
 
     const interviewersForDay = getInterviewersForDay(state, state['day']);
@@ -46,7 +45,6 @@ export const useApplicationData = function () {
     }
 
     async function bookInterview(id, interview, mode = 'SAVE') {
-        console.log(interview);
         const appointment = {
             ...state.appointments[id],
             interview: { ...interview }
@@ -90,7 +88,6 @@ export const useApplicationData = function () {
     const setDay = day => {
         setState(prev => ({ ...prev, day: day }))
     }
-    //!
 
     return { state, setDay, bookInterview, deleteInterview, editInterview, setDaysAndAppointmentsAndInterviewers, interviewersForDay, dailyAppointments, setState }
 

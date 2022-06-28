@@ -43,9 +43,7 @@ function Appointment(props) {
             console.log('error')
             setMode(ERROR_SAVE);
             throw error;
-            
         }
-        
     }
 
     function deleteHandler() {
@@ -57,17 +55,14 @@ function Appointment(props) {
     }
 
     async function confirmDeleteHandler() {
-        console.log('Confirmed')
         setMode(DELETE);
         try {
             await deleteInterview(id);
             setMode(EMPTY);
             return;
         } catch (error) {
-            console.log('error')
             setMode(ERROR_DELETE);
             throw error;
-            
         }
         
     }

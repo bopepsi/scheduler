@@ -1,7 +1,9 @@
 import React from "react";
 
 function Empty(props) {
+
     const { onAdd } = props;
+    
     return (
         <main className="appointment__add" >
             <img
